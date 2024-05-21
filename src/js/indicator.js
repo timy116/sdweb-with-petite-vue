@@ -7,4 +7,4 @@ import 'bootstrap/dist/css/bootstrap.css'
 import '../css/indicator.css'
 
 createApp(Navbar).mount('#app')
-createApp(HelloWorld).mount('#footer')
+// createApp(HelloWorld).mount('#footer')

@@ -65,114 +65,114 @@ tr {
 }
 
 /* table of 糧食供需 */
-.table-responsive:nth-of-type(2) .table-label {
+.dropzone:nth-of-type(2) .table-label {
   background-color: #bd2837;
   box-shadow: 13px 3px 28px -10px #bd2837;
 }
 
-.table-responsive:nth-of-type(2) .table-label:before {
+.dropzone:nth-of-type(2) .table-label:before {
   border-color: transparent transparent transparent #6e1821;
 }
 
-.table-responsive:nth-of-type(2) .table-label:after {
+.dropzone:nth-of-type(2) .table-label:after {
   border-color: transparent transparent #6e1821 transparent;
 }
 
 /* table of 農產貿易 */
-.table-responsive:nth-of-type(3) .table-label {
+.dropzone:nth-of-type(3) .table-label {
   background-color: #8d581c;
   box-shadow: 13px 3px 28px -10px #8d581c;
 }
 
-.table-responsive:nth-of-type(3) .table-label:before {
+.dropzone:nth-of-type(3) .table-label:before {
   border-color: transparent transparent transparent #3b250c;
 }
 
-.table-responsive:nth-of-type(3) .table-label:after {
+.dropzone:nth-of-type(3) .table-label:after {
   border-color: transparent transparent #3b250c transparent;
 }
 
 /* table of 農業 */
-.table-responsive:nth-of-type(4) .table-label {
+.dropzone:nth-of-type(4) .table-label {
   background-color: #065b4c;
   box-shadow: 13px 3px 28px -10px #065b4c;
 }
 
-.table-responsive:nth-of-type(4) .table-label:before {
+.dropzone:nth-of-type(4) .table-label:before {
   border-color: transparent transparent transparent #033028;
 }
 
-.table-responsive:nth-of-type(4) .table-label:after {
+.dropzone:nth-of-type(4) .table-label:after {
   border-color: transparent transparent #033028 transparent;
 }
 
 /* table of 農耕業 */
-.table-responsive:nth-of-type(5) .table-label {
+.dropzone:nth-of-type(5) .table-label {
   background-color: #31907e;
   box-shadow: 13px 3px 28px -10px #31907e;
 }
 
-.table-responsive:nth-of-type(5) .table-label:before {
+.dropzone:nth-of-type(5) .table-label:before {
   border-color: transparent transparent transparent #112d28;
 }
 
-.table-responsive:nth-of-type(5) .table-label:after {
+.dropzone:nth-of-type(5) .table-label:after {
   border-color: transparent transparent #112d28 transparent;
 }
 
 /* table of 農牧業 */
-.table-responsive:nth-of-type(6) .table-label {
+.dropzone:nth-of-type(6) .table-label {
   background-color: #77d3a8;
   box-shadow: 13px 3px 28px -10px #77d3a8;
 }
 
-.table-responsive:nth-of-type(6) .table-label:before {
+.dropzone:nth-of-type(6) .table-label:before {
   border-color: transparent transparent transparent #40725a;
 }
 
-.table-responsive:nth-of-type(6) .table-label:after {
+.dropzone:nth-of-type(6) .table-label:after {
   border-color: transparent transparent #40725a transparent;
 }
 
 /* table of 林業 */
-.table-responsive:nth-of-type(7) .table-label {
+.dropzone:nth-of-type(7) .table-label {
   background-color: #137d6a;
   box-shadow: 13px 3px 28px -10px #137d6a;
 }
 
-.table-responsive:nth-of-type(7) .table-label:before {
+.dropzone:nth-of-type(7) .table-label:before {
   border-color: transparent transparent transparent #093c33;
 }
 
-.table-responsive:nth-of-type(7) .table-label:after {
+.dropzone:nth-of-type(7) .table-label:after {
   border-color: transparent transparent #093c33 transparent;
 }
 
 /* table of 漁業 */
-.table-responsive:nth-of-type(8) .table-label {
+.dropzone:nth-of-type(8) .table-label {
   background-color: #023e7d;
   box-shadow: 13px 3px 28px -10px #023e7d;
 }
 
-.table-responsive:nth-of-type(8) .table-label:before {
+.dropzone:nth-of-type(8) .table-label:before {
   border-color: transparent transparent transparent #012041;
 }
 
-.table-responsive:nth-of-type(8) .table-label:after {
+.dropzone:nth-of-type(8) .table-label:after {
   border-color: transparent transparent #012041 transparent;
 }
 
 /* table of 畜牧業 */
-.table-responsive:nth-of-type(9) .table-label {
+.dropzone:nth-of-type(9) .table-label {
   background-color: #da570f;
   box-shadow: 13px 3px 28px -10px #da570f;
 }
 
-.table-responsive:nth-of-type(9) .table-label:before {
+.dropzone:nth-of-type(9) .table-label:before {
   border-color: transparent transparent transparent #5a2407;
 }
 
-.table-responsive:nth-of-type(9) .table-label:after {
+.dropzone:nth-of-type(9) .table-label:after {
   border-color: transparent transparent #5a2407 transparent;
 }
 
