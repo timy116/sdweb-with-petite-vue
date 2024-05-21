@@ -1,0 +1,198 @@
+/* ------------------------ Global styling ------------------------ */
+thead,
+tbody {
+  display: table-header-group;
+}
+
+/* table {
+  border-collapse: inherit;
+} */
+
+th,
+td {
+  display: table-cell;
+}
+
+tr {
+  display: table-row;
+}
+
+.table > :not(caption) > * > * {
+  border-bottom-width: 0;
+}
+
+/* ------------------------ indicator styling ------------------------ */
+/* table part */
+.table-wrapper {
+  position: relative;
+  box-shadow: 0 8px 30px -12px rgba(0, 0, 0, 0.26);
+}
+
+.table-label {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  position: absolute;
+  top: 0;
+  left: 20px;
+  padding: 8px 20px;
+  background: #434acc;
+  box-shadow: 13px 3px 28px -10px #434acc;
+}
+
+.table-label:before {
+  position: absolute;
+  top: 0;
+  content: '';
+  width: 0;
+  right: -8px;
+  height: 0;
+  border-style: solid;
+  border-width: 8px 0 0 8px;
+  border-color: transparent transparent transparent #1b1d4e;
+}
+
+.table-label:after {
+  position: absolute;
+  top: 0;
+  content: '';
+  left: -8px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 0 8px 8px;
+  border-color: transparent transparent #1b1d4e transparent;
+}
+
+/* table of 糧食供需 */
+.table-responsive:nth-of-type(2) .table-label {
+  background-color: #bd2837;
+  box-shadow: 13px 3px 28px -10px #bd2837;
+}
+
+.table-responsive:nth-of-type(2) .table-label:before {
+  border-color: transparent transparent transparent #6e1821;
+}
+
+.table-responsive:nth-of-type(2) .table-label:after {
+  border-color: transparent transparent #6e1821 transparent;
+}
+
+/* table of 農產貿易 */
+.table-responsive:nth-of-type(3) .table-label {
+  background-color: #8d581c;
+  box-shadow: 13px 3px 28px -10px #8d581c;
+}
+
+.table-responsive:nth-of-type(3) .table-label:before {
+  border-color: transparent transparent transparent #3b250c;
+}
+
+.table-responsive:nth-of-type(3) .table-label:after {
+  border-color: transparent transparent #3b250c transparent;
+}
+
+/* table of 農業 */
+.table-responsive:nth-of-type(4) .table-label {
+  background-color: #065b4c;
+  box-shadow: 13px 3px 28px -10px #065b4c;
+}
+
+.table-responsive:nth-of-type(4) .table-label:before {
+  border-color: transparent transparent transparent #033028;
+}
+
+.table-responsive:nth-of-type(4) .table-label:after {
+  border-color: transparent transparent #033028 transparent;
+}
+
+/* table of 農耕業 */
+.table-responsive:nth-of-type(5) .table-label {
+  background-color: #31907e;
+  box-shadow: 13px 3px 28px -10px #31907e;
+}
+
+.table-responsive:nth-of-type(5) .table-label:before {
+  border-color: transparent transparent transparent #112d28;
+}
+
+.table-responsive:nth-of-type(5) .table-label:after {
+  border-color: transparent transparent #112d28 transparent;
+}
+
+/* table of 農牧業 */
+.table-responsive:nth-of-type(6) .table-label {
+  background-color: #77d3a8;
+  box-shadow: 13px 3px 28px -10px #77d3a8;
+}
+
+.table-responsive:nth-of-type(6) .table-label:before {
+  border-color: transparent transparent transparent #40725a;
+}
+
+.table-responsive:nth-of-type(6) .table-label:after {
+  border-color: transparent transparent #40725a transparent;
+}
+
+/* table of 林業 */
+.table-responsive:nth-of-type(7) .table-label {
+  background-color: #137d6a;
+  box-shadow: 13px 3px 28px -10px #137d6a;
+}
+
+.table-responsive:nth-of-type(7) .table-label:before {
+  border-color: transparent transparent transparent #093c33;
+}
+
+.table-responsive:nth-of-type(7) .table-label:after {
+  border-color: transparent transparent #093c33 transparent;
+}
+
+/* table of 漁業 */
+.table-responsive:nth-of-type(8) .table-label {
+  background-color: #023e7d;
+  box-shadow: 13px 3px 28px -10px #023e7d;
+}
+
+.table-responsive:nth-of-type(8) .table-label:before {
+  border-color: transparent transparent transparent #012041;
+}
+
+.table-responsive:nth-of-type(8) .table-label:after {
+  border-color: transparent transparent #012041 transparent;
+}
+
+/* table of 畜牧業 */
+.table-responsive:nth-of-type(9) .table-label {
+  background-color: #da570f;
+  box-shadow: 13px 3px 28px -10px #da570f;
+}
+
+.table-responsive:nth-of-type(9) .table-label:before {
+  border-color: transparent transparent transparent #5a2407;
+}
+
+.table-responsive:nth-of-type(9) .table-label:after {
+  border-color: transparent transparent #5a2407 transparent;
+}
+
+.table th {
+  background-color: #8aa96c;
+  color: #ffffff;
+  border: solid 1px #acb9a0;
+  white-space: nowrap;
+}
+
+.table tr:nth-child(odd) td {
+  background-color: #e6ebd8;
+}
+
+.table tr:nth-child(even) td {
+  background-color: #f2f2f2;
+}
+
+@media screen and (max-width: 430px) {
+  tbody {
+    text-align: left;
+  }
+}

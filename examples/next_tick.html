@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Next Tick Usage</title>
+</head>
+<body>
+<div v-scope="Updater({ message: '', updated: false })"></div>
+
+<script type="module">
+	/*
+	* Remember that nextTick is useful in situations where you need to interact with the updated DOM
+	* after making changes to reactive data.
+	*
+	* It helps in avoiding timing issues and ensures that the DOM is in sync
+	* with the data before executing certain operations.
+	* */
+	import {createApp, nextTick} from 'petite-vue'
+
+	function Updater() {
+		return {
+			$template: '#app',
+			message: 'Initial message',
+			updated: false,
+			updateMessage() {
+				this.message = 'Updated message';
+				this.updated = false;
+
+				nextTick(() => {
+					this.updated = true;
+					console.log('DOM updated:', this.$refs.messageElement.textContent.trim());
+				});
+			}
+		}
+	}
+
+	createApp({
+		Updater
+	}).mount();
+</script>
+
+<template id="app">
+	<!--
+	In Petite-Vue, when using the ref attribute to reference elements, you need to
+	wrap the element inside a <template> tag. This is because Petite-Vue uses the <template> tag
+	to define the template scope for the component.
+	-->
+	<p ref="messageElement">{{ message }}</p>
+	<button @click="updateMessage">Update</button>
+</template>
+
+</body>
+</html>

@@ -1,0 +1,820 @@
+body {
+  margin: 0px;
+  font-size: 11pt;
+}
+
+a img {
+  border: 0px;
+}
+
+.SubMenu {
+  background-color: #5e7e3d;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+.SubMenu a {
+  color: #ffffff;
+  font-size: 10pt;
+  text-decoration: none;
+}
+
+.SubMenu a:hover {
+  text-decoration: underline;
+}
+
+.SubMenu img {
+  vertical-align: middle;
+}
+
+.MenuPath {
+  font-size: 11pt;
+  font-weight: bold;
+  color: #448505;
+}
+
+/*** 圖型按鈕 ***/
+.ThreeDButton {
+  background-position: right;
+  display: inline-block;
+  height: 23px;
+}
+
+.ThreeDButton span {
+  background-repeat: no-repeat;
+  background-position: left;
+  display: inline-block;
+  height: 23px;
+}
+
+.ThreeDButton input {
+  background-color: Transparent;
+  border-style: none;
+  padding-left: 22px;
+  padding-top: 2px;
+  cursor: pointer;
+  height: 23px;
+  color: #000000;
+  font-family: 新細明體;
+}
+
+.ThreeDButtonBackground {
+  background-image: url(https://agrstat.moa.gov.tw/sdweb/images/bt_right.gif);
+}
+
+.ThreeDButtonBackground span {
+  background-image: url(https://agrstat.moa.gov.tw/sdweb/images/bt_left.gif);
+}
+
+.ThreeDButtonMouseOver {
+  background-image: url(https://agrstat.moa.gov.tw/sdweb/images/bt_ga_right.gif);
+}
+
+.ThreeDButtonMouseOver span {
+  background-image: url(https://agrstat.moa.gov.tw/sdweb/images/bt_ga_left.gif);
+}
+
+.List {
+  line-height: 140%;
+}
+
+.List table {
+  border-collapse: collapse;
+}
+
+.List td {
+  border: solid 1px #acb9a0;
+}
+
+.List .Header1 {
+  background-color: #8aa96c;
+  color: #000000;
+}
+
+.List .Header2 {
+  background-color: #8aa96c;
+}
+
+.List .Header2 a {
+  color: #000000;
+}
+
+.List .Header3 {
+  background-color: #e6ebd8;
+  color: #0056e5;
+}
+
+.List .Header3 a {
+  color: #333333;
+}
+
+.List .Header3-2 {
+  background-color: #e6ebd8;
+  color: #0056e5;
+}
+
+.List .Header3-2 a {
+  color: #333333;
+}
+
+.GridView {
+  border-collapse: collapse;
+}
+
+.GridView .Header th {
+  background-color: #8aa96c;
+  color: #ffffff;
+  border: solid 1px #acb9a0;
+  white-space: nowrap;
+}
+
+.GridView .Header a {
+  color: #ffffff;
+}
+
+.GridView .Header2 {
+  background-color: #e6ebd8;
+  color: #000000;
+}
+
+.GridView .Empty td {
+  background-color: #e6ebd8;
+  color: blue;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+}
+
+.GridView .Row td {
+  border: solid 1px #acb9a0;
+  background-color: #d3dbbf;
+  color: #333333;
+}
+
+.GridView .Row a {
+  color: #333333;
+}
+
+.GridView .AlternatingRow td {
+  border: solid 1px #acb9a0;
+  background-color: #e6ebd8;
+  color: #333333;
+}
+
+.GridView .AlternatingRow a {
+  color: #333333;
+}
+
+.GridView .Pager td {
+  background-color: #8aa96c;
+  color: #ffffff;
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+.GridView .Pager a {
+  color: #ffffff;
+}
+
+.GridView .Item {
+  background-color: #d3dbbf;
+  color: #333333;
+}
+
+.ListTable {
+  border-collapse: collapse;
+}
+
+.ListTable .Header th {
+  background-color: #8aa96c;
+  color: #ffffff;
+  border: solid 1px #acb9a0;
+  white-space: nowrap;
+}
+
+.ListTable .Header a {
+  color: #ffffff;
+}
+
+.ListTable .Header2 {
+  background-color: #e6ebd8;
+  color: #000000;
+}
+
+.ListTable .Row td {
+  border: solid 1px #acb9a0;
+}
+
+.ListTable .Row a {
+  color: #000000;
+}
+
+.ListTable .AlternatingRow td {
+  border: solid 1px #acb9a0;
+}
+
+.ListTable .AlternatingRow a {
+  color: #000000;
+}
+
+.ListTable .Pager td {
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+.ListTable .Item {
+  background-color: #d3dbbf;
+  color: #333333;
+}
+
+.NounItem {
+  color: #006600;
+  font-weight: bold;
+}
+
+.NounTable {
+  border: 1px solid;
+  background-color: white;
+  width: 100%;
+}
+
+.NounTable td {
+  padding: 4px;
+}
+
+.NounFieldLabel {
+  text-align: right;
+  white-space: nowrap;
+  background-color: #eef3fe;
+}
+
+.NounDimension ul {
+  padding: 0pt;
+  margin: 0pt 0pt 0pt 14pt;
+  line-height: 130%;
+}
+
+.NounDimension li {
+  list-style-type: square;
+}
+
+.NounDimension li li {
+  list-style-type: disc;
+}
+
+.NounDimension li li li {
+  list-style-type: circle;
+}
+
+.ChangePassword {
+  margin-left: auto;
+  margin-right: auto;
+  width: 649px;
+  border-collapse: collapse;
+}
+
+.FieldSet {
+  background-color: #ededed;
+  border: 1px solid #d1deab;
+  padding-left: 20px;
+  padding-right: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.FieldSet b {
+  color: #333333;
+}
+
+.FieldSet .label {
+  background: url("https://agrstat.moa.gov.tw/sdweb/images/icon_yellow.jpg");
+  background-repeat: no-repeat;
+  background-position: left center;
+  padding-left: 16px;
+  font-weight: bold;
+  color: #ed6400;
+  white-space: nowrap;
+  vertical-align: middle;
+  display: block;
+}
+
+.OfficialUpload {
+  border-collapse: collapse;
+  margin: auto auto auto auto;
+  white-space: nowrap;
+}
+
+.OfficialUpload th {
+  color: #df0155;
+  background-color: #e6ebd8;
+  border: solid 1px #acd9a0;
+  text-align: center;
+}
+
+.OfficialUpload .header1 {
+  color: #000000;
+  background-color: #8aa96c;
+  border: solid 1px #acd9a0;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.OfficialUpload td {
+  color: #333333;
+  background-color: #e6ebd8;
+  border: solid 1px #acd9a0;
+}
+
+/*** 回上一頁按鈕 ***/
+.BackPanel {
+  text-align: right;
+  padding-bottom: 10px;
+}
+
+.LogOutBtn {
+  position: absolute;
+  top: 68px;
+  left: 930px;
+  height: 23px;
+}
+
+.Book {
+  border: solid 1px black;
+  width: 98%;
+  line-height: 160%;
+}
+
+.Book th {
+  text-align: right;
+  white-space: nowrap;
+  color: #000000;
+  background-color: #8aa96c;
+}
+
+.Book .Field {
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #8aa96c;
+}
+
+.Book .Help {
+  color: #e4f4ff;
+  background-color: #8aa96c;
+  font-size: small;
+  line-height: 120%;
+}
+
+.Book .CategoryTD {
+  border-top: solid 1px black;
+  background-color: #e6ebd8;
+}
+
+.BookCatalog {
+  margin: 0;
+  padding-left: 30px;
+}
+
+.BookCatalog a {
+  color: #333333;
+}
+
+.BookCatalog li {
+  list-style: none;
+  background-image: url(https://agrstat.moa.gov.tw/sdweb/images/images/icon_blue.gif);
+  background-repeat: no-repeat;
+  background-position: 0 7px;
+  padding: 0px 20px;
+  text-indent: 0;
+}
+
+.BookCatalog li li {
+  background-image: url(https://agrstat.moa.gov.tw/sdweb/images/images/icon_yellow.jpg);
+  background-repeat: no-repeat;
+  background-position: 0 7px;
+  padding: 0px 20px;
+  position: relative;
+  left: -30px;
+}
+
+.BookCatalog li li li {
+  background-image: url(https://agrstat.moa.gov.tw/sdweb/images/images/icon_blue_s.gif);
+  background-repeat: no-repeat;
+  background-position: 0 8px;
+  padding: 0px 20px;
+  position: relative;
+  left: -30px;
+}
+
+.BookCatalog li li li li {
+  padding: 0;
+  background-image: none;
+  list-style-type: square;
+}
+
+.BookCatalog li li li li li {
+  padding: 0;
+  background-image: none;
+  list-style-type: disc;
+}
+
+.BookCatalog image {
+  vertical-align: middle;
+}
+
+.BookCatalog .OpeningClosingLi {
+  background-image: none;
+  padding: 0;
+  text-indent: -20px;
+  margin-left: 20px;
+}
+
+.BookCatalog .OpeningClosingImage {
+  cursor: pointer;
+}
+
+.report-title-color {
+  background-color: #ffff99;
+  font-size: 12pt;
+  height: 16.5pt;
+}
+
+.report_title {
+  font-size: 14pt;
+  font-weight: bold;
+  text-align: center;
+}
+
+.report_unit {
+  font-size: 10pt;
+  font-weight: bold;
+  text-align: right;
+  margin-right: 5px;
+}
+
+.ReportHead {
+  background-color: #8aa96c;
+  font-family: 新細明體;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+  border: solid 1px #ffffff;
+  mso-number-format: \@;
+}
+
+.ReportItem {
+  background-color: #8aa96c;
+  font-family: 新細明體;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+  border: solid 1px #ffffff;
+  mso-number-format: \@;
+}
+
+.ReportLeft {
+  background-color: #d3dbbf;
+  font-family: 新細明體;
+  vertical-align: middle;
+  min-width: 80px;
+  mso-number-format: \@;
+  border-left: solid 1px #ffffff;
+  border-top: solid 1px #ffffff;
+}
+
+.ReportLeftSpace {
+  background-color: #d3dbbf;
+  border-left-color: #d3dbbf;
+  min-width: 80px;
+  border-left: solid 1px #ffffff;
+}
+
+.ReportValue {
+  background-color: #d3dbbf;
+  text-align: right;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.table-line {
+  border: 1px solid #acb9a0;
+}
+
+.ReportCenter {
+  background-color: #d3dbbf;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+/*** 樹狀選單 ***/
+.TreeCode {
+  margin: 10px;
+}
+
+.TreeCode a {
+  text-decoration: none;
+  font-size: 15px;
+  color: Black;
+}
+
+.TreeCode .Root {
+  /*保留*/
+}
+
+.TreeCode .NodeNo,
+.SearchLink .NodeNo {
+  font-size: 10pt;
+  color: #b00000;
+  font-weight: bold;
+}
+
+.TreeCode .Node {
+  font-family: 細明體;
+  font-size: 11pt;
+  color: #2e2e2e;
+}
+
+.TreeCode .Leaf {
+  color: #105ac9;
+}
+
+.TreeCode .SelALL,
+.SearchLink .SelALL {
+  color: #314380;
+  font-weight: bold;
+}
+
+.TreeCode .SearchLink {
+  color: #105ac9;
+}
+
+.TreeCode .SearchLink input {
+  margin-left: -25px; /*為了縮排用的*/
+}
+
+.TreeCode .SearchLink td {
+  padding-left: 25px; /*為了縮排用的*/
+}
+
+.lblmemo {
+  font-weight: bold;
+  text-align: center;
+  color: Blue;
+}
+
+.lblmemo2 {
+  font-weight: bold;
+  text-align: left;
+  color: red;
+}
+
+.detail_table {
+  border-color: #acb9a0;
+  border-collapse: collapse;
+  line-height: 150%;
+}
+
+.detail_table th {
+  background-color: #8aa96c;
+  color: #000000;
+  border-color: #acb9a0;
+  white-space: nowrap;
+  text-align: right;
+  vertical-align: top;
+}
+
+.detail_table td {
+  border-color: #acb9a0;
+  background-color: #e6ebd8;
+  color: #333333;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-family: 細明體;
+  vertical-align: top;
+}
+
+.detail_table td a {
+  color: #ed6400;
+  text-decoration: underline;
+}
+
+.detail_table td a:hover {
+  text-decoration: underline;
+}
+
+.Question {
+  background-color: #8aa96c;
+  border-color: #acb9a0;
+  padding: 5px 5px 5px 5px;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 11pt;
+}
+
+.QuestionSub {
+  background-color: #e6ebd8;
+  border-color: #acb9a0;
+  padding: 5px 5px 5px 5px;
+  font-weight: bold;
+  text-decoration: none;
+  border-collapse: collapse;
+  font-weight: normal;
+  font-size: 11pt;
+}
+
+.QuestionSub a {
+  color: #ed6400;
+  font-size: 11pt;
+  text-decoration: none;
+}
+
+.QuestionSub a:hover {
+  text-decoration: underline;
+}
+
+.Question_table {
+  border-color: #acb9a0;
+  border-collapse: collapse;
+  line-height: 150%;
+  font-size: 11pt;
+}
+
+.Question_table th {
+  background-color: #d2dbbe;
+  color: #000000;
+  border-color: #acb9a0;
+  white-space: nowrap;
+  text-align: right;
+  vertical-align: top;
+}
+
+.Question_table .KindTitle {
+  background-color: #8aa96c;
+  color: #000000;
+  border-color: #acb9a0;
+  white-space: nowrap;
+  text-align: center;
+  vertical-align: top;
+  font-weight: bold;
+}
+
+.Question_table .title1 {
+  border-color: #acb9a0;
+  background-color: #e6ebd8;
+  color: #ed6400;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-family: 細明體;
+  vertical-align: top;
+}
+
+.Question_table .title2 {
+  border-color: #acb9a0;
+  background-color: #e6ebd8;
+  color: #333333;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-family: 細明體;
+  vertical-align: top;
+}
+
+.Question_table td a {
+  color: #ed6400;
+  text-decoration: underline;
+}
+
+.Question_table td a:hover {
+  text-decoration: underline;
+}
+
+.QMemo {
+  font-weight: bold;
+  color: red;
+}
+
+/* ------------------- devider -------------------------- */
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100%;
+}
+
+.table-container {
+  display: flex;
+  /* max-width: 1200px; */
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+}
+
+/* search input */
+.FieldSet {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20px 15px;
+  margin: 0;
+}
+
+.typeSearch {
+  width: 100%;
+  padding: 0 1px;
+  margin: 20px 0 5px;
+}
+
+/* title of td:nth-child(1) */
+.List .Header2 {
+  display: flex;
+  align-items: center;
+  background-color: #f2f2f2;
+}
+
+.typeSearch img {
+  margin-right: 5px;
+}
+
+.List tr {
+  display: flex;
+}
+
+.List tr td:nth-child(1) {
+  flex: 1;
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.List tr td:nth-child(2) {
+  flex: 3;
+}
+
+table.List td {
+  padding: 8px;
+}
+
+table.List a {
+  display: inline-block;
+  margin: 4px;
+  text-decoration: none;
+  color: #333;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+table.List a:hover {
+  color: #065b4c;
+}
+
+table.List a::before {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #065b4c;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+#dvDown {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 50px;
+  padding: 0 !important;
+}
+
+table.List a:hover::before {
+  transform: scaleX(1);
+}
+
+@media screen and (max-width: 430px) {
+  tbody {
+    text-align: center;
+  }
+
+  .List tr {
+    flex-direction: column;
+  }
+
+  table.List .Header2 {
+    font-size: 1.1rem;
+    justify-content: center;
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+
+  table.List .Header3,
+  table.List .Header3-2 {
+    border-top: none;
+  }
+
+  table.List td {
+    padding: 8px;
+  }
+
+  table.List a {
+    margin-bottom: 5px;
+  }
+}

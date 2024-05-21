@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Template</title>
+</head>
+<body>
+
+<template id="counter-template">
+	<span>My count is {{ count }}</span>
+	<button @click="inc">++</button>
+</template>
+
+<div v-scope="Counter({initCount: 1})" @vue:mounted="mounted"></div>
+<!--<div v-scope="Counter({initCount: 1})" @vue:mounted="mounted"></div>-->
+
+<script type="module">
+	import {createApp} from 'petite-vue'
+
+	function Counter(props) {
+		console.log('Counter created')
+		return {
+			$template: '#counter-template',
+			count: props.initCount,
+			inc() {
+				this.count++
+			},
+			mounted() {
+				console.log(`mounted with count: ${this.count}`)
+			},
+			unmounted() {
+				console.log('unmounted')
+			}
+		}
+	}
+
+	createApp({
+		Counter
+	}).mount()
+</script>
+
+</body>
+</html>

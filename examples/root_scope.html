@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Root Scope</title>
+</head>
+<body>
+<div v-scope>
+	<p>count: {{count}}</p>
+	<p>plusOne: {{plusOne}}</p>
+	<button @click="increment">increment</button>
+</div>
+
+<div v-scope>
+	<p>count: {{count}}</p>
+	<p>plusOne: {{plusOne}}</p>
+	<button @click="increment">increment</button>
+</div>
+
+<script type="module">
+	import {createApp} from 'petite-vue'
+
+	createApp({
+		count: 0,
+		get plusOne() {
+			return this.count + 1
+		},
+		increment() {
+			this.count++
+		}
+	}).mount()
+</script>
+</body>
+</html>
