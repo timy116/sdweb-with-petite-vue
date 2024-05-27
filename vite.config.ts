@@ -9,7 +9,8 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
-        nested: resolve(__dirname, 'indicator.html'),
+        indicator: resolve(__dirname, 'indicator.html'),
+        inquireAdvance: resolve(__dirname, 'inquire_advance.html')
       },
     },
   }

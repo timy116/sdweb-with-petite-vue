@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta data-rh="true" name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1,maximum-scale=1"/>
+	<meta charset="UTF-8">
+	<title>農業統計資料查詢</title>
+
+	<!-- import google font -->
+	<link rel="preconnect" href="https://fonts.googleapis.com"/>
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400..600&display=swap" rel="stylesheet"/>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+	      crossorigin="anonymous"/>
+</head>
+<body>
+<div id="dvTop" class="container">
+	<div id="app"></div>
+
+	<!-- table -->
+	<div id="table" class="table-responsive table-responsive-md my-10 table-wrapper pt-5 px-2 pb-2">
+		<table class="table m-0">
+			<thead>
+			<!-- Columns name -->
+			<tr>
+				<th class="text-center" v-scope="head" style="width: 35%" colspan="2">{{ head.mainCategory }}</th>
+				<th class="text-center" v-scope="head">{{ head.subCategory }}</th>
+			</tr>
+			</thead>
+
+			<!-- content -->
+			<tr v-scope="data" v-for="d in data">
+				<td :class="d.isOdd ? 'colOdd' : 'colEven'" class="text-nowrap pl-6" style="width: 15%">
+					<a href="#"
+					   class="link-body-emphasis link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover"
+					>
+						{{ d.firstLevel }}
+					</a>
+				</td>
+				<td :class="d.isOdd ? 'colOdd' : 'colEven'" class="text-nowrap pl-6">{{ d.secondLevel }}</td>
+				<td :class="d.isOdd ? 'colOdd' : 'colEven'" class="text-nowrap pl-6 items">
+					<template v-for="(item, index) in d.items" :key="index">
+						<a
+							href="#"
+							class="link-body-emphasis link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover">
+							{{ item }}
+						</a>
+						<span>、</span>
+					</template>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
+
+<script type="module" src="src/js/inquire_advance.js"></script>
+<script type="module" src="src/js/inquire_advance/main.ts">
+</script>
+</body>
+</html>
