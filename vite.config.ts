@@ -4,14 +4,19 @@ import vue from '@vitejs/plugin-vue'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue()],
-  build: {
-    rollupOptions: {
-      input: {
-        main: resolve(__dirname, 'index.html'),
-        indicator: resolve(__dirname, 'indicator.html'),
-        inquireAdvance: resolve(__dirname, 'inquire_advance.html')
-      },
-    },
-  }
+	plugins: [vue()],
+	build: {
+		rollupOptions: {
+			input: {
+				main: resolve(__dirname, 'index.html'),
+				indicator: resolve(__dirname, 'indicator.html'),
+				inquireAdvance: resolve(__dirname, 'inquire_advance.html')
+			},
+			output: {
+				entryFileNames: 'assets/[name].js',
+				chunkFileNames: 'assets/[name].js',
+				assetFileNames: 'assets/[name].[ext]'
+			}
+		},
+	},
 })

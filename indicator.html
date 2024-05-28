@@ -1,520 +1,527 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta data-rh="true" name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1,maximum-scale=1"/>
-  <meta charset="UTF-8">
-  <title>農業統計資料查詢</title>
+	<meta data-rh="true" name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1,maximum-scale=1"/>
+	<meta charset="UTF-8">
+	<title>農業統計資料查詢</title>
 
-  <!-- import google font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400..600&display=swap" rel="stylesheet"/>
+	<!-- import google font -->
+	<link rel="preconnect" href="https://fonts.googleapis.com"/>
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400..600&display=swap" rel="stylesheet"/>
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-        crossorigin="anonymous"/>
-  <style>
-      .draggable-source--is-dragging {
-          background-color: rgba(250, 96, 10, 0.3);
-          border: #cd2727 dashed 2px;
-      }
-      .draggable-source--is-dragging > h3 {
-          visibility: hidden;
-      }
-      .draggable-source--is-dragging > table {
-          visibility: hidden;
-      }
-      .draggable-mirror {
-          z-index: 999;
-      }
-  </style>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+	      crossorigin="anonymous"/>
+	<style>
+		.draggable-source--is-dragging {
+			background-color: rgba(250, 96, 10, 0.3);
+			border: #cd2727 dashed 2px;
+		}
+
+		.draggable-source--is-dragging > h3 {
+			visibility: hidden;
+		}
+
+		.draggable-source--is-dragging > table {
+			visibility: hidden;
+		}
+
+		.draggable-mirror {
+			z-index: 999;
+		}
+
+		[v-cloak] {
+			display: none;
+		}
+	</style>
 </head>
 <body>
 <div id="dvTop" class="container">
-  <div id="app"></div>
+	<div id="app"></div>
 
-  <!-- Tables -->
-  <div id="tables" class="d-none" @vue:mounted="$el.classList.remove('d-none')">
-    <div v-for="table in tables" class="dropzone">
-      <div class="table-responsive table-responsive-md my-10 table-wrapper pt-5 px-2 pb-2 item">
-        <!-- label -->
-        <h3 class="table-label fw-bold">{{ table.label }}</h3>
+	<!-- Tables -->
+	<div id="tables" v-cloak>
+		<div v-for="table in tables" class="dropzone">
+			<div class="table-responsive table-responsive-md my-10 table-wrapper pt-5 px-2 pb-2 item">
+				<!-- label -->
+				<h3 class="table-label fw-bold">{{ table.label }}</h3>
 
-        <!-- content -->
-        <table class="table m-0">
-          <thead>
-          <!-- Columns name -->
-          <tr>
-            <th v-for="column in columns" class="text-center">{{ column }}</th>
-          </tr>
-          </thead>
+				<!-- content -->
+				<table class="table m-0">
+					<thead>
+					<!-- Columns name -->
+					<tr>
+						<th v-for="column in columns" class="text-center">{{ column }}</th>
+					</tr>
+					</thead>
 
-          <tr v-for="data in table.data">
-            <!-- 重要統計指標 -->
-            <td class="text-nowrap"
-                :class="data.title.isFirstLevel ? 'fw-bold' : 'pl-6'">{{ data.title.name }}
-            </td>
+					<tr v-for="data in table.data">
+						<!-- 重要統計指標 -->
+						<td class="text-nowrap"
+						    :class="data.title.isFirstLevel ? 'fw-bold' : 'pl-6'">{{ data.title.name }}
+						</td>
 
-            <!-- 統計資料 -->
-            <td v-if="data.title.isFirstLevel"></td>
-            <td v-else class="text-end">{{ data.total }}</td>
+						<!-- 統計資料 -->
+						<td v-if="data.title.isFirstLevel"></td>
+						<td v-else class="text-end">{{ data.total }}</td>
 
-            <!-- 單位 -->
-            <td v-if="data.title.isFirstLevel"></td>
-            <td class="text-nowrap" v-else>{{ data.unit }}</td>
+						<!-- 單位 -->
+						<td v-if="data.title.isFirstLevel"></td>
+						<td class="text-nowrap" v-else>{{ data.unit }}</td>
 
-            <!-- 較上年增減 -->
-            <td v-if="data.title.isFirstLevel"></td>
-            <td v-else
-                :style="{ color: data.lastYear.raise > 0 ?
+						<!-- 較上年增減 -->
+						<td v-if="data.title.isFirstLevel"></td>
+						<td v-else
+						    :style="{ color: data.lastYear.raise > 0 ?
 					    'var(--bs-danger)' : data.lastYear.raise < 0 ? 'var(--bs-success)' : 'var(--bs-dark)'}"
-                class="d-flex align-items-center">
-              <i v-if="data.lastYear.raise > 0" class="fa-solid fa-caret-up px-1"></i>
-              <i v-else-if="data.lastYear.raise < 0" class="fa-solid fa-caret-down px-1"></i>
-              <i v-else class="fa-solid fa-minus px-1" style="font-size: .7rem;"></i>
+						    class="d-flex align-items-center">
+							<i v-if="data.lastYear.raise > 0" class="fa-solid fa-caret-up px-1"></i>
+							<i v-else-if="data.lastYear.raise < 0" class="fa-solid fa-caret-down px-1"></i>
+							<i v-else class="fa-solid fa-minus px-1" style="font-size: .7rem;"></i>
 
-              <span class="px-1">{{ data.lastYear.value }}</span>
-            </td>
+							<span class="px-1">{{ data.lastYear.value }}</span>
+						</td>
 
 
-            <!-- 資料日期 -->
-            <td v-if="data.title.isFirstLevel"></td>
-            <td class="text-nowrap" v-else>{{ data.date }}</td>
-          </tr>
-        </table>
-      </div>
-    </div>
-  </div>
+						<!-- 資料日期 -->
+						<td v-if="data.title.isFirstLevel"></td>
+						<td class="text-nowrap" v-else>{{ data.date }}</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
 
-  <div id="footer"></div>
+	<div id="footer"></div>
 </div>
 
 <script type="module" src="/src/js/indicator.js"></script>
 
 <script type="module">
-  import {createApp} from "petite-vue"
+	import {createApp} from "petite-vue"
 
-  createApp(({
-    columns: ['重要統計指標', '統計資料', '單位', '較上年增減', '資料日期',],
-    tables: [
-      {
-        label: '經濟指標',
-        data: [
-          {
-            title: {isFirstLevel: false, name: '農業生產總值'},
-            total: '562,555,485',
-            unit: '千元',
-            lastYear: {raise: 1, value: '5.0%'},
-            date: '111年'
-          },
-          {
-            title: {isFirstLevel: false, name: '農產產值'},
-            total: '275,934,115',
-            unit: '千元',
-            lastYear: {raise: 1, value: '1.4%'},
-            date: '111年'
-          },
-          {
-            title: {isFirstLevel: false, name: '林產產值'},
-            total: '242,212',
-            unit: '千元',
-            lastYear: {raise: 1, value: '6.5%'},
-            date: '111年'
-          },
-          {
-            title: {isFirstLevel: false, name: '畜牧產值'},
-            total: '204,172,925',
-            unit: '千元',
-            lastYear: {raise: 1, value: '10.0%'},
-            date: '111年'
-          },
-          {
-            title: {isFirstLevel: false, name: '漁產總值'},
-            total: '82,206,232',
-            unit: '千元',
-            lastYear: {raise: 1, value: '5.6%'},
-            date: '111年'
-          },
-        ]
-      },
-      {
-        label: '糧食供需',
-        data: [
-          {
-            title: {isFirstLevel: true, name: '糧食自給率'},
-          },
-          {
-            title: {isFirstLevel: false, name: '以熱量計算'},
-            total: '30.73',
-            unit: '%',
-            lastYear: {raise: -1, value: '0.5%'},
-            date: '111年'
-          },
-          {
-            title: {isFirstLevel: false, name: '以價格計算'},
-            total: '58.62',
-            unit: '%',
-            lastYear: {raise: -1, value: '0.5%'},
-            date: '111年'
-          },
-          {
-            title: {isFirstLevel: true, name: '純糧食供給量'},
-          },
-          {
-            title: {isFirstLevel: false, name: '每人白米純糧食供給量'},
-            total: '43.0',
-            unit: '公斤',
-            lastYear: {raise: -1, value: '0.1%'},
-            date: '111年'
-          },
-          {
-            title: {isFirstLevel: false, name: '每人每年肉類純糧食供給量'},
-            total: '87.5',
-            unit: '公斤',
-            lastYear: {raise: 1, value: '4.0%'},
-            date: '111年'
-          },
-          {
-            title: {isFirstLevel: false, name: '每人每年油脂類純糧食供給量'},
-            total: '22.5',
-            unit: '公斤',
-            lastYear: {raise: -1, value: '2.2%'},
-            date: '111年'
-          },
-        ]
-      },
-      {
-        label: '農產貿易',
-        data: [
-          {
-            title: {isFirstLevel: true, name: '進口'},
-          },
-          {
-            title: {isFirstLevel: false, name: '農耕產品進口值'},
-            total: '925,474',
-            unit: '千美元',
-            lastYear: {raise: -1, value: '13.0%'},
-            date: '113年03月'
-          },
-          {
-            title: {isFirstLevel: false, name: '林產品進口值'},
-            total: '90,579',
-            unit: '千美元',
-            lastYear: {raise: -1, value: '28.0%'},
-            date: '113年03月'
-          },
-          {
-            title: {isFirstLevel: false, name: '水產品進口值'},
-            total: '175,565.3',
-            unit: '千美元',
-            lastYear: {raise: -1, value: '5.5%'},
-            date: '113年03月'
-          },
-          {
-            title: {isFirstLevel: true, name: '出口'},
-          },
-          {
-            title: {isFirstLevel: false, name: '農耕產品進口值'},
-            total: '252,539',
-            unit: '千美元',
-            lastYear: {raise: 1, value: '10.6%'},
-            date: '113年03月'
-          },
-          {
-            title: {isFirstLevel: false, name: '林產品進口值'},
-            total: '3,712',
-            unit: '千美元',
-            lastYear: {raise: -1, value: '34.0%'},
-            date: '113年03月'
-          },
-          {
-            title: {isFirstLevel: false, name: '水產品進口值'},
-            total: '128,218',
-            unit: '千美元',
-            lastYear: {raise: 1, value: '2.5%'},
-            date: '113年03月'
-          },
-        ]
-      },
-      {
-        label: '農業',
-        data: [
-          {
-            title: {isFirstLevel: true, name: '生產'},
-          },
-          {
-            title: {isFirstLevel: false, name: '農產產值'},
-            total: '275,934,115',
-            unit: '千元',
-            lastYear: {raise: 1, value: '1.4%'},
-            date: '111年'
-          },
-          {
-            title: {isFirstLevel: true, name: '農家所得'},
-          },
-          {
-            title: {isFirstLevel: false, name: '農家所得'},
-            total: '1,206,739',
-            unit: '元/戶',
-            lastYear: {raise: 1, value: '2.8%'},
-            date: '111年'
-          },
-          {
-            title: {isFirstLevel: false, name: '農業淨收入'},
-            total: '280,889',
-            unit: '元/戶',
-            lastYear: {raise: 1, value: '1.2%'},
-            date: '111年'
-          },
-          {
-            title: {isFirstLevel: true, name: '組織'},
-          },
-          {
-            title: {isFirstLevel: false, name: '農會數'},
-            total: '302',
-            unit: '家',
-            lastYear: {raise: 0, value: '0.0%'},
-            date: '111年'
-          },
-          {
-            title: {isFirstLevel: false, name: '農會會員數'},
-            total: '1,720,138',
-            unit: '人',
-            lastYear: {raise: -1, value: '1.6%'},
-            date: '111年'
-          },
-          {
-            title: {isFirstLevel: false, name: '農會正會員數'},
-            total: '838,599',
-            unit: '人',
-            lastYear: {raise: -1, value: '2.1%'},
-            date: '111年'
-          },
-          {
-            title: {isFirstLevel: false, name: '農會農事小組數'},
-            total: '4,633',
-            unit: '組',
-            lastYear: {raise: -1, value: '0.1%'},
-            date: '111年'
-          },
-        ]
-      },
-      {
-        label: '農耕業',
-        data: [
-          {
-            title: {isFirstLevel: true, name: '生產'},
-          },
-          {
-            title: {isFirstLevel: false, name: '稻米生產指數'},
-            total: '100.91',
-            unit: '%',
-            lastYear: {raise: 1, value: '0.9%'},
-            date: '111年'
-          },
-          {
-            title: {isFirstLevel: false, name: '稻米(收穫面積)'},
-            total: '238,701',
-            unit: '公頃',
-            lastYear: {raise: 1, value: '6.6%'},
-            date: '111年'
-          },
-          {
-            title: {isFirstLevel: false, name: '稻米(收穫量)'},
-            total: '1,575,777',
-            unit: '公噸',
-            lastYear: {raise: 1, value: '1.0%'},
-            date: '111年'
-          },
-        ]
-      },
-      {
-        label: '農牧業',
-        data: [
-          {
-            title: {isFirstLevel: true, name: '農家'},
-          },
-          {
-            title: {isFirstLevel: false, name: '農家戶數'},
-            total: '759,472',
-            unit: '戶',
-            lastYear: {raise: 1, value: '0.2%'},
-            date: '111年'
-          },
-          {
-            title: {isFirstLevel: false, name: '農家人口數'},
-            total: '2,391,702',
-            unit: '人',
-            lastYear: {raise: 1, value: '4.9%'},
-            date: '111年'
-          },
-          {
-            title: {isFirstLevel: true, name: '勞動力'},
-          },
-          {
-            title: {isFirstLevel: false, name: '農業就業人口'},
-            total: '494',
-            unit: '千人',
-            lastYear: {raise: -1, value: '5.0%'},
-            date: '111年'
-          },
-          {
-            title: {isFirstLevel: true, name: '勞動力'},
-          },
-          {
-            title: {isFirstLevel: false, name: '耕地面積'},
-            total: '779,826',
-            unit: '公頃',
-            lastYear: {raise: -1, value: '0.9%'},
-            date: '111年'
-          },
-        ]
-      },
-      {
-        label: '林業',
-        data: [
-          {
-            title: {isFirstLevel: true, name: '生產'},
-          },
-          {
-            title: {isFirstLevel: false, name: '林業產值'},
-            total: '242,212',
-            unit: '千元',
-            lastYear: {raise: 1, value: '6.5%'},
-            date: '111年'
-          },
-          {
-            title: {isFirstLevel: false, name: '蓄積'},
-            total: '2,197,090',
-            unit: '公頃',
-            lastYear: {raise: 0, value: '0.0%'},
-            date: '111年'
-          },
-        ]
-      },
-      {
-        label: '漁業',
-        data: [
-          {
-            title: {isFirstLevel: true, name: '漁業產值'},
-          },
-          {
-            title: {isFirstLevel: false, name: '林業產值'},
-            total: '82,206,232',
-            unit: '千元',
-            lastYear: {raise: 1, value: '5.6%'},
-            date: '111年'
-          },
-          {
-            title: {isFirstLevel: false, name: '水產類糧食自給率(價格)'},
-            total: '83',
-            unit: '%',
-            lastYear: {raise: -1, value: '20.2%'},
-            date: '111年'
-          },
-          {
-            title: {isFirstLevel: true, name: '資材'},
-          },
-          {
-            title: {isFirstLevel: false, name: '漁船艘數'},
-            total: '21,708',
-            unit: '艘',
-            lastYear: {raise: -1, value: '0.1%'},
-            date: '111年'
-          },
-          {
-            title: {isFirstLevel: true, name: '勞動力'},
-          },
-          {
-            title: {isFirstLevel: false, name: '漁戶數'},
-            total: '126,055',
-            unit: '戶',
-            lastYear: {raise: -1, value: '4.0'},
-            date: '111年'
-          },
-          {
-            title: {isFirstLevel: true, name: '組織'},
-          },
-          {
-            title: {isFirstLevel: false, name: '漁會數'},
-            total: '40',
-            unit: '家',
-            lastYear: {raise: 0, value: '0.0%'},
-            date: '111年'
-          },
-          {
-            title: {isFirstLevel: false, name: '漁會會員數'},
-            total: '416,504',
-            unit: '人',
-            lastYear: {raise: -1, value: '2.6%'},
-            date: '111年'
-          },
-        ]
-      },
-      {
-        label: '畜牧業',
-        data: [
-          {
-            title: {isFirstLevel: true, name: '生產'},
-          },
-          {
-            title: {isFirstLevel: false, name: '畜牧產值'},
-            total: '204,172,925',
-            unit: '千元',
-            lastYear: {raise: 1, value: '10.0%'},
-            date: '111年'
-          },
-          {
-            title: {isFirstLevel: false, name: '豬(飼養戶數)'},
-            total: '5,804',
-            unit: '戶',
-            lastYear: {raise: -1, value: '3.1%'},
-            date: '112年'
-          },
-          {
-            title: {isFirstLevel: false, name: '豬(飼養頭數)'},
-            total: '5,319,203',
-            unit: '頭',
-            lastYear: {raise: -1, value: '0.1%'},
-            date: '112年'
-          },
-          {
-            title: {isFirstLevel: false, name: '牛(飼養頭數)'},
-            total: '156,021',
-            unit: '頭',
-            lastYear: {raise: -1, value: '2.6%'},
-            date: '112年'
-          },
-          {
-            title: {isFirstLevel: false, name: '蛋雞(飼養隻數)'},
-            total: '45,713',
-            unit: '千隻',
-            lastYear: {raise: 1, value: '1.1%'},
-            date: '112年'
-          },
-          {
-            title: {isFirstLevel: false, name: '肉用雞(飼養隻數)'},
-            total: '55,256',
-            unit: '千隻',
-            lastYear: {raise: 1, value: '8.7%'},
-            date: '112年'
-          },
-        ]
-      },
-    ]
-  })).mount("#tables")
+	createApp(({
+		columns: ['重要統計指標', '統計資料', '單位', '較上年增減', '資料日期',],
+		tables: [
+			{
+				label: '經濟指標',
+				data: [
+					{
+						title: {isFirstLevel: false, name: '農業生產總值'},
+						total: '562,555,485',
+						unit: '千元',
+						lastYear: {raise: 1, value: '5.0%'},
+						date: '111年'
+					},
+					{
+						title: {isFirstLevel: false, name: '農產產值'},
+						total: '275,934,115',
+						unit: '千元',
+						lastYear: {raise: 1, value: '1.4%'},
+						date: '111年'
+					},
+					{
+						title: {isFirstLevel: false, name: '林產產值'},
+						total: '242,212',
+						unit: '千元',
+						lastYear: {raise: 1, value: '6.5%'},
+						date: '111年'
+					},
+					{
+						title: {isFirstLevel: false, name: '畜牧產值'},
+						total: '204,172,925',
+						unit: '千元',
+						lastYear: {raise: 1, value: '10.0%'},
+						date: '111年'
+					},
+					{
+						title: {isFirstLevel: false, name: '漁產總值'},
+						total: '82,206,232',
+						unit: '千元',
+						lastYear: {raise: 1, value: '5.6%'},
+						date: '111年'
+					},
+				]
+			},
+			{
+				label: '糧食供需',
+				data: [
+					{
+						title: {isFirstLevel: true, name: '糧食自給率'},
+					},
+					{
+						title: {isFirstLevel: false, name: '以熱量計算'},
+						total: '30.73',
+						unit: '%',
+						lastYear: {raise: -1, value: '0.5%'},
+						date: '111年'
+					},
+					{
+						title: {isFirstLevel: false, name: '以價格計算'},
+						total: '58.62',
+						unit: '%',
+						lastYear: {raise: -1, value: '0.5%'},
+						date: '111年'
+					},
+					{
+						title: {isFirstLevel: true, name: '純糧食供給量'},
+					},
+					{
+						title: {isFirstLevel: false, name: '每人白米純糧食供給量'},
+						total: '43.0',
+						unit: '公斤',
+						lastYear: {raise: -1, value: '0.1%'},
+						date: '111年'
+					},
+					{
+						title: {isFirstLevel: false, name: '每人每年肉類純糧食供給量'},
+						total: '87.5',
+						unit: '公斤',
+						lastYear: {raise: 1, value: '4.0%'},
+						date: '111年'
+					},
+					{
+						title: {isFirstLevel: false, name: '每人每年油脂類純糧食供給量'},
+						total: '22.5',
+						unit: '公斤',
+						lastYear: {raise: -1, value: '2.2%'},
+						date: '111年'
+					},
+				]
+			},
+			{
+				label: '農產貿易',
+				data: [
+					{
+						title: {isFirstLevel: true, name: '進口'},
+					},
+					{
+						title: {isFirstLevel: false, name: '農耕產品進口值'},
+						total: '925,474',
+						unit: '千美元',
+						lastYear: {raise: -1, value: '13.0%'},
+						date: '113年03月'
+					},
+					{
+						title: {isFirstLevel: false, name: '林產品進口值'},
+						total: '90,579',
+						unit: '千美元',
+						lastYear: {raise: -1, value: '28.0%'},
+						date: '113年03月'
+					},
+					{
+						title: {isFirstLevel: false, name: '水產品進口值'},
+						total: '175,565.3',
+						unit: '千美元',
+						lastYear: {raise: -1, value: '5.5%'},
+						date: '113年03月'
+					},
+					{
+						title: {isFirstLevel: true, name: '出口'},
+					},
+					{
+						title: {isFirstLevel: false, name: '農耕產品進口值'},
+						total: '252,539',
+						unit: '千美元',
+						lastYear: {raise: 1, value: '10.6%'},
+						date: '113年03月'
+					},
+					{
+						title: {isFirstLevel: false, name: '林產品進口值'},
+						total: '3,712',
+						unit: '千美元',
+						lastYear: {raise: -1, value: '34.0%'},
+						date: '113年03月'
+					},
+					{
+						title: {isFirstLevel: false, name: '水產品進口值'},
+						total: '128,218',
+						unit: '千美元',
+						lastYear: {raise: 1, value: '2.5%'},
+						date: '113年03月'
+					},
+				]
+			},
+			{
+				label: '農業',
+				data: [
+					{
+						title: {isFirstLevel: true, name: '生產'},
+					},
+					{
+						title: {isFirstLevel: false, name: '農產產值'},
+						total: '275,934,115',
+						unit: '千元',
+						lastYear: {raise: 1, value: '1.4%'},
+						date: '111年'
+					},
+					{
+						title: {isFirstLevel: true, name: '農家所得'},
+					},
+					{
+						title: {isFirstLevel: false, name: '農家所得'},
+						total: '1,206,739',
+						unit: '元/戶',
+						lastYear: {raise: 1, value: '2.8%'},
+						date: '111年'
+					},
+					{
+						title: {isFirstLevel: false, name: '農業淨收入'},
+						total: '280,889',
+						unit: '元/戶',
+						lastYear: {raise: 1, value: '1.2%'},
+						date: '111年'
+					},
+					{
+						title: {isFirstLevel: true, name: '組織'},
+					},
+					{
+						title: {isFirstLevel: false, name: '農會數'},
+						total: '302',
+						unit: '家',
+						lastYear: {raise: 0, value: '0.0%'},
+						date: '111年'
+					},
+					{
+						title: {isFirstLevel: false, name: '農會會員數'},
+						total: '1,720,138',
+						unit: '人',
+						lastYear: {raise: -1, value: '1.6%'},
+						date: '111年'
+					},
+					{
+						title: {isFirstLevel: false, name: '農會正會員數'},
+						total: '838,599',
+						unit: '人',
+						lastYear: {raise: -1, value: '2.1%'},
+						date: '111年'
+					},
+					{
+						title: {isFirstLevel: false, name: '農會農事小組數'},
+						total: '4,633',
+						unit: '組',
+						lastYear: {raise: -1, value: '0.1%'},
+						date: '111年'
+					},
+				]
+			},
+			{
+				label: '農耕業',
+				data: [
+					{
+						title: {isFirstLevel: true, name: '生產'},
+					},
+					{
+						title: {isFirstLevel: false, name: '稻米生產指數'},
+						total: '100.91',
+						unit: '%',
+						lastYear: {raise: 1, value: '0.9%'},
+						date: '111年'
+					},
+					{
+						title: {isFirstLevel: false, name: '稻米(收穫面積)'},
+						total: '238,701',
+						unit: '公頃',
+						lastYear: {raise: 1, value: '6.6%'},
+						date: '111年'
+					},
+					{
+						title: {isFirstLevel: false, name: '稻米(收穫量)'},
+						total: '1,575,777',
+						unit: '公噸',
+						lastYear: {raise: 1, value: '1.0%'},
+						date: '111年'
+					},
+				]
+			},
+			{
+				label: '農牧業',
+				data: [
+					{
+						title: {isFirstLevel: true, name: '農家'},
+					},
+					{
+						title: {isFirstLevel: false, name: '農家戶數'},
+						total: '759,472',
+						unit: '戶',
+						lastYear: {raise: 1, value: '0.2%'},
+						date: '111年'
+					},
+					{
+						title: {isFirstLevel: false, name: '農家人口數'},
+						total: '2,391,702',
+						unit: '人',
+						lastYear: {raise: 1, value: '4.9%'},
+						date: '111年'
+					},
+					{
+						title: {isFirstLevel: true, name: '勞動力'},
+					},
+					{
+						title: {isFirstLevel: false, name: '農業就業人口'},
+						total: '494',
+						unit: '千人',
+						lastYear: {raise: -1, value: '5.0%'},
+						date: '111年'
+					},
+					{
+						title: {isFirstLevel: true, name: '勞動力'},
+					},
+					{
+						title: {isFirstLevel: false, name: '耕地面積'},
+						total: '779,826',
+						unit: '公頃',
+						lastYear: {raise: -1, value: '0.9%'},
+						date: '111年'
+					},
+				]
+			},
+			{
+				label: '林業',
+				data: [
+					{
+						title: {isFirstLevel: true, name: '生產'},
+					},
+					{
+						title: {isFirstLevel: false, name: '林業產值'},
+						total: '242,212',
+						unit: '千元',
+						lastYear: {raise: 1, value: '6.5%'},
+						date: '111年'
+					},
+					{
+						title: {isFirstLevel: false, name: '蓄積'},
+						total: '2,197,090',
+						unit: '公頃',
+						lastYear: {raise: 0, value: '0.0%'},
+						date: '111年'
+					},
+				]
+			},
+			{
+				label: '漁業',
+				data: [
+					{
+						title: {isFirstLevel: true, name: '漁業產值'},
+					},
+					{
+						title: {isFirstLevel: false, name: '林業產值'},
+						total: '82,206,232',
+						unit: '千元',
+						lastYear: {raise: 1, value: '5.6%'},
+						date: '111年'
+					},
+					{
+						title: {isFirstLevel: false, name: '水產類糧食自給率(價格)'},
+						total: '83',
+						unit: '%',
+						lastYear: {raise: -1, value: '20.2%'},
+						date: '111年'
+					},
+					{
+						title: {isFirstLevel: true, name: '資材'},
+					},
+					{
+						title: {isFirstLevel: false, name: '漁船艘數'},
+						total: '21,708',
+						unit: '艘',
+						lastYear: {raise: -1, value: '0.1%'},
+						date: '111年'
+					},
+					{
+						title: {isFirstLevel: true, name: '勞動力'},
+					},
+					{
+						title: {isFirstLevel: false, name: '漁戶數'},
+						total: '126,055',
+						unit: '戶',
+						lastYear: {raise: -1, value: '4.0'},
+						date: '111年'
+					},
+					{
+						title: {isFirstLevel: true, name: '組織'},
+					},
+					{
+						title: {isFirstLevel: false, name: '漁會數'},
+						total: '40',
+						unit: '家',
+						lastYear: {raise: 0, value: '0.0%'},
+						date: '111年'
+					},
+					{
+						title: {isFirstLevel: false, name: '漁會會員數'},
+						total: '416,504',
+						unit: '人',
+						lastYear: {raise: -1, value: '2.6%'},
+						date: '111年'
+					},
+				]
+			},
+			{
+				label: '畜牧業',
+				data: [
+					{
+						title: {isFirstLevel: true, name: '生產'},
+					},
+					{
+						title: {isFirstLevel: false, name: '畜牧產值'},
+						total: '204,172,925',
+						unit: '千元',
+						lastYear: {raise: 1, value: '10.0%'},
+						date: '111年'
+					},
+					{
+						title: {isFirstLevel: false, name: '豬(飼養戶數)'},
+						total: '5,804',
+						unit: '戶',
+						lastYear: {raise: -1, value: '3.1%'},
+						date: '112年'
+					},
+					{
+						title: {isFirstLevel: false, name: '豬(飼養頭數)'},
+						total: '5,319,203',
+						unit: '頭',
+						lastYear: {raise: -1, value: '0.1%'},
+						date: '112年'
+					},
+					{
+						title: {isFirstLevel: false, name: '牛(飼養頭數)'},
+						total: '156,021',
+						unit: '頭',
+						lastYear: {raise: -1, value: '2.6%'},
+						date: '112年'
+					},
+					{
+						title: {isFirstLevel: false, name: '蛋雞(飼養隻數)'},
+						total: '45,713',
+						unit: '千隻',
+						lastYear: {raise: 1, value: '1.1%'},
+						date: '112年'
+					},
+					{
+						title: {isFirstLevel: false, name: '肉用雞(飼養隻數)'},
+						total: '55,256',
+						unit: '千隻',
+						lastYear: {raise: 1, value: '8.7%'},
+						date: '112年'
+					},
+				]
+			},
+		]
+	})).mount("#tables")
 </script>
 
 <script type="module">
-  import {Droppable} from "@shopify/draggable";
+	import {Droppable} from "@shopify/draggable";
 
-  const droppable = new Droppable(document.querySelectorAll('#tables'), {
-    draggable: '.item',
-    dropzone: '.dropzone',
-  });
+	const droppable = new Droppable(document.querySelectorAll('#tables'), {
+		draggable: '.item',
+		dropzone: '.dropzone',
+	});
 
 
-  droppable.on('droppable:dropped', () => console.log('droppable:dropped'));
-  droppable.on('droppable:returned', () => console.log('droppable:returned'));
+	droppable.on('droppable:dropped', () => console.log('droppable:dropped'));
+	droppable.on('droppable:returned', () => console.log('droppable:returned'));
 </script>
 </body>
 </html>
