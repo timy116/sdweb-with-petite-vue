@@ -15,4 +15,10 @@
   & .items span:last-child {
     display: none;
   }
+
+  @media screen and (max-width: 430px) {
+    tbody {
+      text-align: start;
+    }
+  }
 }

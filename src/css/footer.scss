@@ -1,0 +1,23 @@
+#footer {
+  background-color: rgb(138, 169, 108);
+
+  & .list-group {
+    background-color: rgb(138, 169, 108);
+  }
+
+  & .contact-info {
+    border-left: 2px solid #e6ebd8;
+  }
+
+  & .list-group-item {
+    background-color: rgb(138, 169, 108);
+    color: rgba(255, 255, 255, 0.8);
+    border: none;
+  }
+
+  @media screen and (min-width: 1200px) {
+    & .contact-info {
+      border: none;
+    }
+  }
+}
