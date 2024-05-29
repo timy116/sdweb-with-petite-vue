@@ -5,6 +5,7 @@ import '../css/SDWeb.css'
 import '../css/SDWeb_extend.css'
 import 'bootstrap/dist/css/bootstrap.css'
 import '../css/inquire_advance.scss'
+import '../css/navbar.scss'
 import '../css/footer.scss'
 import 'bootstrap/js/index.esm.js'
 

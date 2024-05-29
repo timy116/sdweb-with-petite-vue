@@ -1,0 +1,15 @@
+$primary-color: #8aa96c;
+$text-color: #fff;
+$active: #c5ccb2;
+
+.book-navbar {
+  background-color: $primary-color;
+
+  & .nav-link {
+    color: $text-color !important;
+
+    &:hover, &:focus, &.active {
+      background-color: $active;
+    }
+  }
+}

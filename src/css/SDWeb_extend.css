@@ -63,17 +63,6 @@ body {
   max-width: 100%;
 }
 
-/* ------------------------ SD web Global styling ------------------------ */
-/* navbar styling */
-.book-navbar .nav-link {
-  color: var(--bs-white) !important;
-}
-
-.book-navbar .nav-link:hover,
-.book-navbar .nav-link:focus {
-  background-color: #c5ccb2;
-}
-
 /* ------------------------ Spacing ------------------------ */
 /* Margin */
 .my-10 {
