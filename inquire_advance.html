@@ -38,7 +38,7 @@
 			<tr v-scope="data" v-for="d in data"  v-cloak>
 				<td :class="d.isOdd ? 'colOdd' : 'colEven'" class="text-nowrap pl-6" style="width: 15%">
 					<a href="#"
-					   class="link-body-emphasis link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover"
+					   class="link fw-bold"
 					>
 						{{ d.firstLevel }}
 					</a>
@@ -48,7 +48,7 @@
 					<template v-for="(item, index) in d.items" :key="index">
 						<a
 							href="#"
-							class="link-body-emphasis link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover">
+							class="link">
 							{{ item }}
 						</a>
 						<span>、</span>

@@ -1,0 +1,13 @@
+.book-navbar {
+  background-color: #8aa96c;
+}
+.book-navbar .nav-link {
+  color: #fff;
+}
+.book-navbar .nav-link:hover, .book-navbar .nav-link:focus, .book-navbar .nav-link.active {
+  background-color: #fff;
+  color: #8aa96c;
+  font-weight: 700;
+}
+
+/*# sourceMappingURL=navbar.css.map */

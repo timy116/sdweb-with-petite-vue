@@ -10,7 +10,7 @@ const copyright = 'Copyright © 農業部 版權所有'
 </script>
 
 <template>
-  <footer>
+  <footer style="margin-top: 5rem;">
     <div class="container">
       <div class="d-flex flex-column flex-lg-row justify-content-lg-between">
         <!-- content -->
