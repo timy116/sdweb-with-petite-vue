@@ -99,7 +99,7 @@ const data: inquireAdvanceProps[] = [
 	{
 		firstLevel: '其他農業統計',
 		secondLevel: '',
-		items: ['水土保持統計', ' 動植物防疫檢疫統計', '農田水利統計', '農民團體數', '家畜保險統計'],
+		items: ['水土保持統計', ' 動植物防疫檢疫統計', '農田水利統計', '農民團體統計', '家畜保險統計'],
 		isOdd: true
 	},
 	// {

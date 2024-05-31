@@ -23,7 +23,7 @@
 <div id="dvTop" class="container">
 	<div id="app"></div>
 
-	<div id="category" class="category">
+	<div id="category" class="category" v-scope="" v-cloak>
 		<div class="form-wrapper mt-3 px-2">
 			<form action="#" class="form px-1 py-1" style="background-color: #f3f4f2; border-radius: 5px">
 				<div class="inputs d-flex flex-column flex-lg-wrap align-content-xl-center flex-xl-row justify-content-xl-around">
@@ -41,10 +41,10 @@
 								        data-bs-auto-close="outside" aria-expanded="false">
 									全部
 								</button>
-								<ul v-scope="categories" v-cloak class="dropdown-menu" v-cloak>
+								<ul v-scope="categories" class="dropdown-menu" v-cloak>
 									<li v-for="(category, index) in categories" class="dropdown-item">
-										<div class="form-check">
-											<input class="form-check-input" type="checkbox" value="" :id="`cb-${index}`">
+										<div class="form-check" v-cloak>
+											<input class="form-check-input" type="checkbox" value="" :id="`cb-${index}`" checked>
 											<label class="form-check-label" :for="`cb-${index}`">
 												{{ category }}
 											</label>
@@ -70,7 +70,7 @@
 
 							<div class="list-group-item px-2 d-flex align-content-center flex-wrap">
 								<input class="form-check-input me-1" type="radio" name="listGroupRadio" value="" id="secondRadio">
-								<label class="form-check-label" for="secondRadio">包含歷史書刊</label>
+								<label class="form-check-label" for="secondRadio">含歷史書刊</label>
 							</div>
 						</div>
 					</div>
@@ -99,6 +99,12 @@
 						</div>
 					</div>
 
+				</div>
+				<div class="search d-flex align-content-center justify-content-center my-1">
+					<button
+						class="btn btn-secondary"
+						style="height: fit-content; padding: 4px 12px;"
+					>查詢</button>
 				</div>
 			</form>
 		</div>
@@ -134,14 +140,14 @@
 
 			<!-- content -->
 			<tr v-scope="data" v-for="book in data" v-cloak class="text-center">
-				<td class="col-2 text-start align-content-center fw-medium">
+				<td class="col-3 text-start align-content-center fw-medium">
 					{{ book.category }}
 				</td>
 
-				<td class="col-4 align-content-center">
-					<div class="d-flex flex-column justify-content-center">
+				<td class="col-3 align-content-center">
+					<div class="d-flex flex-column justify-content-center text-start">
 						<div>
-							<i class="fa-solid fa-book" style="color: #212529;"></i>
+							<i class="fa-solid fa-book" style="color: #127547;"></i>
 							<a href="#">{{ book.title }}</a>
 						</div>
 						<span

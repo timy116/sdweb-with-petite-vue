@@ -40,14 +40,14 @@ export default {
     return {
       activeHref: null as string | null,
       navItems: [
-        {text: '系統公告', href: '../maintenance/Announce.aspx'},
+        {text: '系統公告', href: '#'},
         {text: '農業指標', href: 'indicator.html'},
         {text: '動態查詢', href: 'inquire_advance.html'},
-        {text: '農業貿易', href: '../trade/tradereport.aspx'},
+        {text: '農業貿易', href: '#'},
         {text: '統計書刊', href: 'book.html'},
-        {text: '下載區', href: '../common/Download.aspx'},
-        {text: '公務統計', href: '../official/OfficialInformation.aspx'},
-        {text: '常見問題', href: '../maintenance/Question.aspx'}
+        {text: '下載區', href: '.#'},
+        {text: '公務統計', href: '#'},
+        // {text: '常見問題', href: '../maintenance/Question.aspx'}
       ] as NavItem[]
     }
   },
