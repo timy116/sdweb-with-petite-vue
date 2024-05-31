@@ -1,0 +1,15 @@
+#table th {
+  background-color: #8aa96c;
+  color: #fff;
+}
+#table td.colOdd {
+  background-color: #e6ebd8;
+}
+#table td.colEven {
+  background-color: #f2f2f2;
+}
+#table .items span:last-child {
+  display: none;
+}
+
+/*# sourceMappingURL=inquire_advance.css.map */
