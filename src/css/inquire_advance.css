@@ -1,3 +1,29 @@
+#table .link {
+  display: inline-block;
+  margin: 0.2rem;
+  text-decoration: none;
+  color: #333;
+  position: relative;
+  white-space: nowrap;
+  transition: color 0.3s ease;
+}
+#table .link:hover {
+  color: #065b4c;
+}
+#table .link:hover::before {
+  transform: scaleX(1);
+}
+#table .link::before {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #065b4c;
+  transform: scaleX(0);
+  transition: transform 0.2s ease;
+}
 #table th {
   background-color: #8aa96c;
   color: #fff;
@@ -10,6 +36,11 @@
 }
 #table .items span:last-child {
   display: none;
+}
+@media screen and (max-width: 430px) {
+  #table tbody {
+    text-align: start;
+  }
 }
 
 /*# sourceMappingURL=inquire_advance.css.map */

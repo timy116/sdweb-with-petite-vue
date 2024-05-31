@@ -12,27 +12,36 @@
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 	      crossorigin="anonymous"/>
+
+	<style>
+		[v-cloak] {
+			display: none;
+		}
+	</style>
 </head>
 <body>
 <div id="dvTop" class="container">
 	<div id="app"></div>
 
 	<!-- table -->
-	<div id="table" class="table-responsive table-responsive-md my-10 table-wrapper pt-5 px-2 pb-2">
+	<div
+		id="table"
+		class="table-responsive table-responsive-md table-wrapper pt-5 px-2 pb-2"
+	>
 		<table class="table m-0">
 			<thead>
 			<!-- Columns name -->
 			<tr>
-				<th class="text-center" v-scope="head" style="width: 35%" colspan="2">{{ head.mainCategory }}</th>
-				<th class="text-center" v-scope="head">{{ head.subCategory }}</th>
+				<th v-cloak class="text-center" v-scope="head" style="width: 35%" colspan="2">{{ head.mainCategory }}</th>
+				<th v-cloak class="text-center" v-scope="head">{{ head.subCategory }}</th>
 			</tr>
 			</thead>
 
 			<!-- content -->
-			<tr v-scope="data" v-for="d in data">
+			<tr v-scope="data" v-for="d in data"  v-cloak>
 				<td :class="d.isOdd ? 'colOdd' : 'colEven'" class="text-nowrap pl-6" style="width: 15%">
 					<a href="#"
-					   class="link-body-emphasis link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover"
+					   class="link fw-bold"
 					>
 						{{ d.firstLevel }}
 					</a>
@@ -42,7 +51,7 @@
 					<template v-for="(item, index) in d.items" :key="index">
 						<a
 							href="#"
-							class="link-body-emphasis link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover">
+							class="link">
 							{{ item }}
 						</a>
 						<span>、</span>
@@ -51,6 +60,8 @@
 			</tr>
 		</table>
 	</div>
+
+	<div id="footer"></div>
 </div>
 
 <script type="module" src="src/js/inquire_advance.js"></script>
